@@ -97,7 +97,6 @@ export class EmployeeListComponent implements OnInit {
       this.pageSize = emp["PageSize"];
       this.currentPage = emp["CurrentPage"];    
       this.employeeResponse = emp["employees"];
-      console.log(emp["employees"]);
     },error=>{
       alert("Couldn't load employees");
     }
