@@ -1,0 +1,41 @@
+<form [formGroup]="addEmployeForm" (ngSubmit)="addEmp()" class="mt-2">
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': addEmployeForm.get('name').errors && addEmployeForm.get('name').touched}" class="form-control"
+      placeholder="Name" formControlName="name">
+      <div class="invalid-feedback" *ngIf="addEmployeForm.get('name').touched && addEmployeForm.get('name').hasError('required')">Name is required.</div>
+      <div class="invalid-feedback" *ngIf="addEmployeForm.get('name').hasError('minlength') && addEmployeForm.get('name').touched">
+        Name should at least 4 characters long.
+      </div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': addEmployeForm.get('email').errors && addEmployeForm.get('email').touched}" class="form-control"
+      placeholder="email" formControlName="email">
+      <div class="invalid-feedback" *ngIf="addEmployeForm.get('email').touched && addEmployeForm.get('email').hasError('required')">Email is required.</div>
+      <div class="invalid-feedback" *ngIf="addEmployeForm.get('email').hasError('email') && addEmployeForm.get('email').touched">
+        Enter a valid email.
+      </div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': addEmployeForm.get('address').errors && addEmployeForm.get('address').touched}" class="form-control"
+      placeholder="Address" formControlName="address">
+      <div class="invalid-feedback" *ngIf="addEmployeForm.get('address').touched && addEmployeForm.get('address').hasError('required')">Address is required.</div>
+      <div class="invalid-feedback" *ngIf="addEmployeForm.get('address').hasError('minlength') && addEmployeForm.get('address').touched">
+        Address should at least 4 characters long.
+      </div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': addEmployeForm.get('phone').errors && addEmployeForm.get('phone').touched}" class="form-control"
+      placeholder="Phone No." formControlName="phone">
+      <div class="invalid-feedback" *ngIf="addEmployeForm.get('phone').touched && addEmployeForm.get('phone').hasError('required')">Phone is required.</div>
+      <div class="invalid-feedback" *ngIf="addEmployeForm.get('phone').hasError('minlength') && addEmployeForm.get('phone').touched">
+        Phone no should at least 11 characters long.
+      </div>
+      <div class="invalid-feedback" *ngIf="addEmployeForm.get('phone').hasError('maxlength') && addEmployeForm.get('phone').touched">
+        Phone shouldn't exceeds 14 characters.
+      </div>
+  </div>
+  <button [disabled]="!addEmployeForm.valid" type="submit" class="btn btn-success mr-sm-2">Add Employee</button>
+</form>

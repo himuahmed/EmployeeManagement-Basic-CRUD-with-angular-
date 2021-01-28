@@ -1,0 +1,41 @@
+<form [formGroup]="editEmployeForm" (ngSubmit)="editEmployee()" class="mt-2">
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': editEmployeForm.get('name').errors && editEmployeForm.get('name').touched}" class="form-control"
+      placeholder="Name" formControlName="name">
+      <div class="invalid-feedback" *ngIf="editEmployeForm.get('name').touched && editEmployeForm.get('name').hasError('required')">Name is required.</div>
+      <div class="invalid-feedback" *ngIf="editEmployeForm.get('name').hasError('minlength') && editEmployeForm.get('name').touched">
+        Name should at least 4 characters long.
+      </div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': editEmployeForm.get('email').errors && editEmployeForm.get('email').touched}" class="form-control"
+      placeholder="Email" formControlName="email">
+      <div class="invalid-feedback" *ngIf="editEmployeForm.get('email').touched && editEmployeForm.get('email').hasError('required')">Email is required.</div>
+      <div class="invalid-feedback" *ngIf="editEmployeForm.get('email').hasError('email') && editEmployeForm.get('email').touched">
+        Enter a valid email.
+      </div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': editEmployeForm.get('address').errors && editEmployeForm.get('address').touched}" class="form-control"
+      placeholder="Address" formControlName="address">
+      <div class="invalid-feedback" *ngIf="editEmployeForm.get('address').touched && editEmployeForm.get('address').hasError('required')">Address is required.</div>
+      <div class="invalid-feedback" *ngIf="editEmployeForm.get('address').hasError('minlength') && editEmployeForm.get('address').touched">
+        Address should at least 4 characters long.
+      </div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': editEmployeForm.get('phone').errors && editEmployeForm.get('phone').touched}" class="form-control"
+      placeholder="Phone No." formControlName="phone">
+      <div class="invalid-feedback" *ngIf="editEmployeForm.get('phone').touched && editEmployeForm.get('phone').hasError('required')">Phone is required.</div>
+      <div class="invalid-feedback" *ngIf="editEmployeForm.get('phone').hasError('minlength') && editEmployeForm.get('phone').touched">
+        Phone no should at least 11 characters long.
+      </div>
+      <div class="invalid-feedback" *ngIf="editEmployeForm.get('phone').hasError('maxlength') && editEmployeForm.get('phone').touched">
+        Phone shouldn't exceeds 14 characters.
+      </div>
+  </div>
+  <button [disabled]="!editEmployeForm.valid" type="submit" class="btn btn-success mr-sm-2">Update</button>
+</form>

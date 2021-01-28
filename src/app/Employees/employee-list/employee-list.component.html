@@ -1,0 +1,40 @@
+<div class="employee-table">
+  <table class="table table-striped">
+    <thead>
+      <tr class="employee-table">
+        <th scope="col"><input type="checkbox" [checked]="isChecked" (change)="checkAll($event)"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let emp of employeeResponse">
+     
+        <tr class="employee-table">
+          <td scope="row"><input type="checkbox" value="{{emp.Id}}" [checked]="isChecked" (change)="onCheck(emp.Id)"></td>
+          <td>{{emp.Name}}</td>
+          <td>{{emp.Email}}</td>
+          <td>{{emp.Address}}</td>
+          <td>{{emp.Phone}}</td>
+          <td>
+            <a [routerLink]="['/editemployee/',emp.Id]"><i class="fa fa-pencil fontawesomeinorange ml-2 ml-1" aria-hidden="true"></i></a>
+            <a><i class="fa fa-trash fontawesomeinred ml-2" aria-hidden="true" (click)="removeEmployee(emp.Id)"></i></a>
+          </td>
+        </tr>
+      
+
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-6">Swowing <strong>{{employeeResponse.length}}</strong> out of <strong>{{totalCount}}</strong>. </div>
+    <div class="col-6">
+      <pagination class="float-right" [boundaryLinks]="true" [totalItems]="totalCount" [(ngModel)]="currentPage" [itemsPerPage]="pageSize" (pageChanged)=(pageChanged($event))
+          previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+      </pagination>
+    </div>
+  </div>
+</div>
+
+
